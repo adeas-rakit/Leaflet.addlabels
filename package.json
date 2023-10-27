@@ -1,0 +1,24 @@
+{
+  "name": "leaflet-addlabels",
+  "version": "1.0.0",
+  "description": "Display the labels following polylines for Leaflet",
+  "main": "dist/Leaflet.addlabels.js",
+  "directories": {
+    "example": "demo"
+  },
+  "scripts": {
+    "build": "npm install && npm audit fix --force && uglifyjs src/L.LabelTextCollision.js src/Leaflet.addlabels.js -o dist/Leaflet.addlabels.js && uglifyjs src/L.LabelTextCollision.js src/Leaflet.addlabels.js",
+    "test": "jshint src/Leaflet.addlabels.js"
+  },
+  "keywords": [
+    "leaflet",
+    "maps",
+    "street",
+    "labels",
+    "label"
+  ],
+  "devDependencies": {
+    "jshint": "^2.11.0",
+    "uglify-js": "^3.4.9"
+  }
+}
