@@ -84,8 +84,8 @@ L.AddLabels = L.LabelTextCollision
                 }
             }
 
+            console.log(this)
             if (clickedLayer) {
-                console.log(this)
                 if (clickedLayer.getPopup() && clickedLayer.getPopup().getContent()) {
                     // Jika popup sudah didefinisikan, buka popup saat diklik
                     clickedLayer.openPopup();
