@@ -69,7 +69,20 @@ L.AddLabels = L.LabelTextCollision
                 this._mouseHoverThrottled = false;
             }, this), 32);
         },
+        _handleMouseClick: function (e, point) {
+            var layer, clickedLayer;
 
+            for (var order = this._drawFirst; order; order = order.next) {
+                layer = order.layer;
+                if (layer.options.interactive && layer._containsPoint(point)) {
+                    clickedLayer = layer;
+                }
+            }
+
+            if (clickedLayer) {
+                this._fireEvent([clickedLayer], e, 'click');
+            }
+        },
         _fireEvent: function (layers, e, type) {
             this._map._fireDOMEvent(e, type || e.type, layers);
         },
