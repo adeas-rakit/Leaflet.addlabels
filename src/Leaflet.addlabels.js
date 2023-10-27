@@ -70,36 +70,6 @@ L.AddLabels = L.LabelTextCollision
             }, this), 32);
         },
 
-        _handleMouseClick: function (e, point) {
-            if (this._mouseHoverThrottled) {
-                return;
-            }
-
-            var layer, clickedLayer;
-
-            for (var order = this._drawFirst; order; order = order.next) {
-                layer = order.layer;
-                if (layer.options.interactive && layer._containsPoint(point)) {
-                    clickedLayer = layer;
-                }
-            }
-
-            console.log(this)
-            if (clickedLayer) {
-                if (clickedLayer.getPopup() && clickedLayer.getPopup().getContent()) {
-                    // Jika popup sudah didefinisikan, buka popup saat diklik
-                    clickedLayer.openPopup();
-                }
-
-                this._fireEvent([clickedLayer], e, 'click');
-            }
-
-            this._mouseHoverThrottled = true;
-            setTimeout(L.Util.bind(function () {
-                this._mouseHoverThrottled = false;
-            }, this), 32);
-        },
-
         _fireEvent: function (layers, e, type) {
             this._map._fireDOMEvent(e, type || e.type, layers);
         },
